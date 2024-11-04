@@ -32,26 +32,31 @@ def login():
         password = request.form.get('password')
 
         if not email or not password:
-            return "Email and password are required", 400
+            return jsonify(success=False, message="Email and password are required"), 400
 
         connection = get_db_connection()
         cursor = connection.cursor()
 
+        # Fetch the stored password and role for the provided email
         cursor.execute("SELECT password, role FROM users WHERE email=%s", (email,))
         user = cursor.fetchone()
         cursor.close()
         connection.close()
 
-        # Here you would typically use bcrypt or another library to check hashed passwords
-        if user and user[0] == password:  # This should be hashed password comparison
+        # Compare the fetched password with the input password (no hashing)
+        if user and user[0] == password:  # Check plain text password
             role = user[1]
             if role == "employee":
-                return redirect(url_for('employee_dashboard'))
+                return jsonify(success=True, message='/employee_dashboard')  # Send dashboard URL in response
             elif role == "manager":
-                return redirect(url_for('manager_dashboard'))
-        return "Invalid credentials", 401  # Provide a more user-friendly message
+                return jsonify(success=True, message='/manager_dashboard')
+        
+        # If login fails
+        return jsonify(success=False, message="Invalid credentials"), 401
 
     return render_template('login.html')
+
+
 @app.route('/google_login')
 def google_login():
     if not google.authorized:
