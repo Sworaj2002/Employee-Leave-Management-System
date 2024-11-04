@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="/login" method="post">
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required>
+        
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        
+            <label class="show-password-label">
+                <input type="checkbox" id="show-password" onclick="showPassword()"> Show Password
+            </label>
+            
+            <button type="submit">Login</button>
+            <!-- Google Logo with link to employee dashboard -->
+            <a href="/google_login">
+                <img src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png" alt="Google Logo" style="width: 40px; height: 40px; color:Black;"/>
+            </a>
+            
+            <button type="button" onclick="location.href='/register'">Registration</button>
+        </form>   
+        
+        <!-- Popup Modal -->
+        <div id="error-popup" class="popup">
+            <div class="popup-content">
+                <span class="close-popup" onclick="closePopup()">&times;</span>
+                <h2>Error</h2>
+                <p>Enter valid login details.</p>
+            </div>
+        </div>
+
+        <script>
+            function showPassword() {
+                const passwordField = document.getElementById('password');
+                passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
+            }
+            
+            function showErrorPopup() {
+                const popup = document.getElementById('error-popup');
+                popup.style.display = 'flex'; // Show the popup
+            }
+            
+            function closePopup() {
+                const popup = document.getElementById('error-popup');
+                popup.style.display = 'none'; // Hide the popup
+            }
+            
+            // Simulate login validation (replace this with your actual validation logic)
+            document.querySelector('form').addEventListener('submit', function (e) {
+                e.preventDefault(); // Prevent form submission for demo
+            
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+            
+                // Replace the following condition with actual login validation
+                if (email !== 'user@example.com' || password !== 'password123') {
+                    showErrorPopup(); // Show the error popup if login fails
+                } else {
+                    // Proceed with actual login logic
+                    alert('Login successful!'); // Just for demo purposes
+                }
+            });
+        </script>
+        
+    </div>
+</body>
+</html>

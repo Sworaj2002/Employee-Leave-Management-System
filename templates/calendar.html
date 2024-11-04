@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Calendar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .day {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+            height: 100px; /* Adjust as needed */
+        }
+
+        .leave {
+            background-color: red;
+            color: white;
+        }
+
+        .leave-name {
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+        }
+
+        .nav-buttons {
+            margin-bottom: 20px;
+        }
+
+        button {
+            margin: 0 5px;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            padding: 10px 20px; 
+            background-color: #4CAF50; 
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+            width: 100%; 
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .navbar li {
+            margin-right: 20px;
+        }
+        
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            transition: color 0.3s;
+            padding: 14px 16px;
+        }
+
+        .navbar a:hover {
+            color: #FFD700;
+        }
+        .logout-button {
+            padding: 10px; 
+            background-color: #c71f30; 
+            color: white; 
+            border: none;
+            border-radius: 5px; 
+            cursor: pointer;
+            position: relative;
+            left: 700px;
+            height: 50px;
+            width: 100px; 
+        }
+        .logout-button:hover {
+            background-color: #b71c1c;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/manager_dashboard">Home</a></li>
+            <li><a href="/leave_approve">Approve Leave Requests</a></li>
+            <li><a href="/calendar">View Leave Calendar</a></li>
+            <button class="logout-button" onclick="location.href='/'">Logout</button>
+        </ul>
+    </nav>
+    <h1>Leave Calendar</h1>
+<div class="nav-buttons">
+    <button onclick="prevMonth()">Previous</button>
+    <span id="month-year"></span> 
+    <button onclick="nextMonth()">Next</button>
+</div>
+<div id="calendar" class="calendar"></div>
+
+<script src="static/js/calendar.js"></script>
+
+</body>
+</html>

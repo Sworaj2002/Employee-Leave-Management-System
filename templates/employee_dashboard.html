@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/employee_dashboard">Home</a></li>
+            <li><a href="/leave_request">Submit Leave Request</a></li>
+            <li><a href="/leave_balance">Leave Balance</a></li>
+            <button class="logout-button" onclick="location.href='/'">Logout</button>
+        </ul>
+    </nav>
+    <div class="dashboard-container">
+        <h2>Welcome, Employee</h2>
+        <button type="button" class="dashboard-button" onclick="location.href='/leave_request'">Submit Leave Request</button>
+        <button type="button" class="dashboard-button" onclick="location.href='/leave_balance'">View Leave Balance</button>
+    </div>
+
+</body>
+</html>

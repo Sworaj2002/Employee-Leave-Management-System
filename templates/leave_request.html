@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Request</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/employee_dashboard">Home</a></li>
+            <li><a href="/leave_request">Submit Leave Request</a></li>
+            <li><a href="/leave_balance">Leave Balance</a></li>
+            <button class="logout-button" onclick="location.href='/'">Logout</button>
+        </ul>
+    </nav>
+
+    <div class="form-container">
+        <h2>Leave Request</h2>
+        <form id="leave-request-form" action="/leave_request" method="post" onsubmit="showPopup(event)">
+            <label for="employee-id">Employee ID:</label>
+            <input type="text" id="employee-id" name="employee-id" required>
+    
+            <label for="employee-name">Employee Name:</label>
+            <input type="text" id="employee-name" name="employee-name" required>
+    
+            <label for="leave-type">Leave Type:</label>
+            <select id="leave-type" name="leave-type" required>
+                <option value="" disabled selected>Select Leave Type</option>
+                <option value="sick">Sick Leave</option>
+                <option value="casual">Casual Leave</option>
+                <option value="annual">Annual Leave</option>
+                <option value="maternity">Maternity Leave</option>
+                <option value="paternity">Paternity Leave</option>
+                <option value="other">Other</option>
+            </select>
+    
+            <label for="start-date">Start Date:</label>
+            <input type="date" id="start-date" name="start-date" required>
+    
+            <label for="end-date">End Date:</label>
+            <input type="date" id="end-date" name="end-date" required>
+    
+            <label for="reason">Reason:</label>
+            <textarea id="reason" name="reason" required></textarea>
+    
+            <button type="submit">Submit Leave Request</button>
+        </form>
+    </div>
+    
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close-popup" onclick="closePopup()">&times;</span>
+            <p>Leave request submitted successfully!</p>
+        </div>
+    </div>
+    
+    <script src="static/js/leave_request.js">
+        
+    </script>
+</body>
+</html>

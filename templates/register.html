@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+        /* Inner CSS for styling the registration form */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f8f9fa; /* Light background color */
+        }
+
+        h2 {
+            text-align: center;
+            color: #343a40; /* Darker color for heading */
+        }
+
+        form {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ced4da; /* Border around the form */
+            border-radius: 5px;
+            background-color: #ffffff; /* White background for the form */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #495057; /* Darker color for labels */
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ced4da; /* Border for input fields */
+            border-radius: 4px;
+        }
+
+        .eye-icon {
+            cursor: pointer;
+            position: absolute; /* Use absolute positioning */
+            right: 10px; /* Align to the right */
+            top: 8px; /* Adjust the vertical position */
+        }
+
+        .error {
+            color: red;
+            display: none; /* Initially hidden */
+            margin-bottom: 15px; /* Space below error message */
+        }
+
+        button {
+            background-color: #007bff; /* Bootstrap primary color */
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+        }
+
+        /* Styles for popup */
+        .popup {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+            z-index: 1000; /* Sit on top */
+            justify-content: center; /* Center vertically */
+            align-items: center; /* Center horizontally */
+        }
+
+        .popup-content {
+            background-color: white; /* White background for the popup */
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .close-popup {
+            cursor: pointer;
+            background-color: #dc3545; /* Bootstrap danger color */
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Register</h2>
+    <form method="post" action="/register" id="registration-form">
+        <label for="employee_name">Employee Name:</label>
+        <input type="text" id="employee_name" name="employee_name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="password">Password:</label>
+        <div style="position: relative;">
+            <input type="password" id="password" name="password" required>
+            <span class="eye-icon" id="toggle-password" onclick="togglePassword()">👁️</span>
+        </div>
+        
+        <label for="confirm_password">Confirm Password:</label>
+        <div style="position: relative;">
+            <input type="password" id="confirm_password" name="confirm_password" required>
+            <span class="eye-icon" id="toggle-confirm-password" onclick="toggleConfirmPassword()">👁️</span>
+        </div>
+
+        <div class="error" id="password-error">Passwords do not match!</div>
+        
+        <label for="role">Role:</label>
+        <select id="role" name="role" required>
+            <option value="employee">Employee</option>
+            <option value="manager">Manager</option>
+        </select>
+        
+        <button type="submit">Register</button>
+        <button type="button" onclick="location.href='/'">Back To Home</button>
+    </form>
+
+    <div class="popup" id="success-popup">
+        <div class="popup-content">
+            <p>Registered successfully!</p>
+            <button class="close-popup" onclick="closePopup()">Close</button>
+        </div>
+    </div>
+
+    <script src="js/registration.js"></script>
+    <script>
+        function togglePassword() {
+            const passwordField = document.getElementById('password');
+            const toggleIcon = document.getElementById('toggle-password');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                toggleIcon.textContent = '🙈'; // Change to eye-off icon
+            } else {
+                passwordField.type = 'password';
+                toggleIcon.textContent = '👁️'; // Change back to eye icon
+            }
+        }
+
+        function toggleConfirmPassword() {
+            const confirmPasswordField = document.getElementById('confirm_password');
+            const toggleIcon = document.getElementById('toggle-confirm-password');
+            if (confirmPasswordField.type === 'password') {
+                confirmPasswordField.type = 'text';
+                toggleIcon.textContent = '🙈'; // Change to eye-off icon
+            } else {
+                confirmPasswordField.type = 'password';
+                toggleIcon.textContent = '👁️'; // Change back to eye icon
+            }
+        }
+
+        document.getElementById('registration-form').addEventListener('submit', function(event) {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+            const errorDiv = document.getElementById('password-error');
+            const successPopup = document.getElementById('success-popup');
+
+            if (password !== confirmPassword) {
+                errorDiv.style.display = 'block';
+                event.preventDefault(); // Prevent form submission
+            } else {
+                errorDiv.style.display = 'none'; // Hide error if passwords match
+                successPopup.style.display = 'flex'; // Show success popup
+                event.preventDefault(); // Prevent form submission for demonstration
+                // Here you can submit the form via AJAX or just remove this line in production
+            }
+        });
+
+        function closePopup() {
+            const successPopup = document.getElementById('success-popup');
+            successPopup.style.display = 'none'; // Hide popup
+        }
+    </script>
+</body>
+</html>

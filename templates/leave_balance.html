@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Balance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/employee_dashboard">Home</a></li>
+            <li><a href="/leave_request">Submit Leave Request</a></li>
+            <li><a href="/leave_balance">Leave Balance</a></li>
+            <button class="logout-button" onclick="location.href='/'">Logout</button>
+        </ul>
+    </nav>
+    <h1>Leave Balance</h1>
+<table id="leave-balance-table">
+    <thead>
+        <tr>
+            <th>Employee ID</th>
+            <th>Employee Name</th>
+            <th>Total Leave</th>
+            <th>Current Leave</th>
+            <th>Remaining Leave</th>
+        </tr>
+    </thead>
+    <tbody id="leave-balance-body">
+    </tbody>
+</table>
+<script src="static/js/leave_balance.js"></script>
+
+</body>
+</html>

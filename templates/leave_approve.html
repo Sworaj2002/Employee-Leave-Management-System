@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Approval</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/manager_dashboard">Home</a></li>
+            <li><a href="/leave_approve">Approve Leave Requests</a></li>
+            <li><a href="/calendar">View Leave Calendar</a></li>
+            <button class="logout-button" onclick="location.href='/'">Logout</button>
+        </ul>
+    </nav>
+    <h2>Leave Approval Requests</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>Employee Name</th>
+                <th>Leave Type</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Reason</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for request in requests %}
+            <tr>
+                <td>{{ request[0] }}</td>
+                <td>{{ request[1] }}</td>
+                <td>{{ request[2] }}</td>
+                <td>{{ request[3] }}</td>
+                <td>{{ request[4] }}</td>
+                <td>{{ request[5] }}</td>
+                <td>
+                    <form action="/leave_approve/{{ request[0] }}" method="post" style="display: inline;">
+                        <button type="submit" name="action" value="approve">Approve</button>
+                        <button type="submit" name="action" value="reject">Reject</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>    
+</body>
+</html>

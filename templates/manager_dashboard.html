@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Dashboard</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/manager_dashboard">Home</a></li>
+            <li><a href="/leave_approve">Approve Leave Requests</a></li>
+            <li><a href="/calendar">View Leave Calendar</a></li>
+            <button class="logout-button" onclick="location.href='/'">Logout</button>
+
+        </ul>
+    </nav>
+
+    <div class="dashboard-container">
+        <h2>Welcome, Manager</h2>
+        <button type="button" class="dashboard-button" onclick="location.href='/leave_approve'">Approve Leave Requests</button>
+        <button type="button" class="dashboard-button" onclick="location.href='/calendar'">View Leave Calendar</button>
+    </div>
+</body>
+</html>
