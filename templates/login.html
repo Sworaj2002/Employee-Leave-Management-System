@@ -9,7 +9,7 @@
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <form action="/login" method="post">
+        <form id="login-form">
             <label for="email">Email:</label>
             <input type="text" id="email" name="email" required>
         
@@ -21,7 +21,6 @@
             </label>
             
             <button type="submit">Login</button>
-            <!-- Google Logo with link to employee dashboard -->
             <a href="/google_login">
                 <img src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png" alt="Google Logo" style="width: 40px; height: 40px; color:Black;"/>
             </a>
@@ -30,11 +29,11 @@
         </form>   
         
         <!-- Popup Modal -->
-        <div id="error-popup" class="popup">
+        <div id="error-popup" class="popup" style="display: none;">
             <div class="popup-content">
                 <span class="close-popup" onclick="closePopup()">&times;</span>
                 <h2>Error</h2>
-                <p>Enter valid login details.</p>
+                <p id="error-message">Enter valid login details.</p>
             </div>
         </div>
 
@@ -43,9 +42,11 @@
                 const passwordField = document.getElementById('password');
                 passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
             }
-            
-            function showErrorPopup() {
+
+            function showErrorPopup(message) {
                 const popup = document.getElementById('error-popup');
+                const messageElement = document.getElementById('error-message');
+                messageElement.textContent = message; // Set custom error message
                 popup.style.display = 'flex'; // Show the popup
             }
             
@@ -53,21 +54,35 @@
                 const popup = document.getElementById('error-popup');
                 popup.style.display = 'none'; // Hide the popup
             }
-            
-            // Simulate login validation (replace this with your actual validation logic)
-            document.querySelector('form').addEventListener('submit', function (e) {
-                e.preventDefault(); // Prevent form submission for demo
-            
+
+            // Handle form submission with AJAX
+            document.getElementById('login-form').addEventListener('submit', async function (e) {
+                e.preventDefault(); // Prevent the default form submission
+
                 const email = document.getElementById('email').value;
                 const password = document.getElementById('password').value;
-            
-                // Replace the following condition with actual login validation
-                if (email !== 'user@example.com' || password !== 'password123') {
-                    showErrorPopup(); // Show the error popup if login fails
+
+                // Send a POST request to the login endpoint
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: new URLSearchParams({ email: email, password: password })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.success) {
+                        window.location.href = data.message; // Redirect to the dashboard URL
+                    } else {
+                        showErrorPopup(data.message); // Show the error popup with the message
+                    }
                 } else {
-                    // Proceed with actual login logic
-                    alert('Login successful!'); // Just for demo purposes
+                    const errorData = await response.json();
+                    showErrorPopup(errorData.message);
                 }
+                
             });
         </script>
         
