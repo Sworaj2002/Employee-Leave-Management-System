@@ -101,4 +101,4 @@ The Employee Leave Management System is a web application designed to streamline
 ### Leave Calendar
 ![Screenshot 2024-12-07 192849](https://github.com/user-attachments/assets/450b1e40-2c0f-4cb6-a42c-cf8c20638637)
 
-                                                                  **--END--**
+                                                        **--END--**
