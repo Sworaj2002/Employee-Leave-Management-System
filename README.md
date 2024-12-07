@@ -83,3 +83,17 @@ The Employee Leave Management System is a web application designed to streamline
    ```bash
    git clone https://github.com/Sworaj2002/employee-leave-management-system.git
    cd employee-leave-management-system
+# Some Screenshots
+![Screenshot 2024-12-07 191942](https://github.com/user-attachments/assets/8c2cc84d-0a12-489d-8c1e-96f4d586b0bf)
+![Screenshot 2024-12-07 192914](https://github.com/user-attachments/assets/97a31bd5-401a-487b-9680-a47e8968bdc2)
+![Screenshot 2024-12-07 192614](https://github.com/user-attachments/assets/15fa1498-3496-4bcf-a36a-f553c1169247)
+![Screenshot 2024-12-07 192647](https://github.com/user-attachments/assets/25d65185-5e5d-408b-a3b9-036aca2905a7)
+![Screenshot 2024-12-07 192706](https://github.com/user-attachments/assets/88266315-aee3-4bc2-b524-5c0ab88ce339)
+![Screenshot 2024-12-07 192754](https://github.com/user-attachments/assets/f4d5d2bc-70e4-4488-b54f-8177b6c37353)
+![Screenshot 2024-12-07 192815](https://github.com/user-attachments/assets/65543ef6-963a-48fa-9a3c-9d2d9931b793)
+![Screenshot 2024-12-07 192849](https://github.com/user-attachments/assets/450b1e40-2c0f-4cb6-a42c-cf8c20638637)
+
+
+
+
+
