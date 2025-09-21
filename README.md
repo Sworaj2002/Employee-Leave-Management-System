@@ -3,7 +3,7 @@ A web-based Employee Leave Management System built with Flask and MySQL, allowin
 # Employee Leave Management System
 
 ## Project Overview
-The Employee Leave Management System is a web application designed to streamline the process of leave requests and approvals within an organization. It provides a user-friendly interface for employees to submit leave requests and for managers to review and approve them. The system is built using Flask for the backend and uses a MySQL database for data storage.
+The Employee Leave Management System is a web application designed to streamline the process of leave requests and approvals within an organization. It provides a user-friendly interface for employees to submit leave requests and for managers to review and approve them. The system is built using Flask for the backend and uses a MySQL database for data storage
 
 ## Features
 
